@@ -1,0 +1,24 @@
+{
+  "name": "generator-full-api",
+  "version": "1.0.0",
+  "description": "A node API generator for Yeoman",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "pluralize"
+  ],
+  "files": [
+    "app"
+  ],
+  "author": "porta8080 <adm.porta8080@gmail.com> (blog-porta8080.rhcloud.com)",
+  "license": "ISC",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "pluralize": "^3.0.0",
+    "slugify": "^1.0.2",
+    "yeoman-generator": "^0.24.1"
+  }
+}
