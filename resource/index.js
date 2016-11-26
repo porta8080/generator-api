@@ -53,7 +53,6 @@ module.exports = yeoman.Base.extend({
     var self = this;
 
     ['controller','dao','model','routes'].forEach(function(input){
-
       if(input == 'controller' && self.no_controller) return true;
       if(input == 'dao' && self.no_dao) return true;
       if(input == 'model' && self.no_model) return true;
