@@ -10,7 +10,7 @@ To create a new project run the following command
 
 `yo full-api <project name>`
 
-### options
+#### options
 
 - `--nr` : create a new project without a HelloWorld resource
 
@@ -22,7 +22,9 @@ To create a new resource, execute
 
 `yo full-api:resource <resource name>`
 
-### options
+> If you don't provide a resource name, you will be prompted for it in the next step
+
+#### options
 
 - `--nr` : create a new resource without a routes file
 - `--nc` : create a new resource without a controller
