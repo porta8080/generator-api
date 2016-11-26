@@ -11,13 +11,13 @@
     "pluralize"
   ],
   "files": [
-    "app"
+    "app",
+    "resource"
   ],
   "author": "porta8080 <adm.porta8080@gmail.com> (blog-porta8080.rhcloud.com)",
   "license": "ISC",
   "dependencies": {
-    "mkdirp": "^0.5.1",
-    "pluralize": "^3.0.0",
+    "ncp": "^2.0.0",
     "slugify": "^1.0.2",
     "yeoman-generator": "^0.24.1"
   }

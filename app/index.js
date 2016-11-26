@@ -7,7 +7,7 @@ module.exports = yeoman.Base.extend({
 
     this.option('nr');
     this.option('no-resources');
-    this.no_resources = this.options.nr ? true : (this.options['no-resource'] ? true : false);
+    this.no_resources = this.options.nr ? true : (this.options['no-resources'] ? true : false);
 
     this.argument('project_name', { type: String, required: false });
   },
@@ -32,16 +32,23 @@ module.exports = yeoman.Base.extend({
     }.bind(this));
   },
   install: function(){
-
   },
   writing: function(){
     var slugify = require('slugify');
-    var pluralize = require('pluralize');
-    this.project_name_slugified = slugify(this.project_name,'_').toLowerCase();
+    var ncp = require('ncp').ncp;
 
-    this.fs.copyTpl(this.templatePath(''),this.destinationPath(this.project_name_slugified+'/'),{
-      project_name_slugified:this.project_name_slugified,
-      project_name:this.project_name
+    this.project_name_slugified = slugify(this.project_name,'_').toLowerCase();
+    var self = this;
+
+    ncp(this.templatePath(''), this.destinationPath(this.project_name_slugified+'/'),{
+      filter: function(entry){
+        if(!self.no_resources) return true;
+        return !(/resources\/hello_world/.test(entry));
+      }
+    }, function (err) {
+      if (err) {
+        return console.error(err);
+      }
     });
   }
 });
