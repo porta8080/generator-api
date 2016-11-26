@@ -34,3 +34,12 @@ To create a new resource, execute
 - `--controller` : **boolean**. Sets whether this resource must contain a controller or not
 - `--dao` : **boolean**. Sets whether this resource must contain a DAO class or not
 - `--model` : **boolean**. Sets whether this resource must contain a model or not
+
+## Content
+
+The application is currently bound with the following stack:
+
+- **ExpressJS** : as the webserver
+- **BluebirdJS** : as the Promise library
+- **Mongoose** : as the ODM tool for handling MongoDB
+- **Nodemon** : as a Node refresher (restarts the application every time it's modified)
