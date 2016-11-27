@@ -9,21 +9,14 @@ module.exports = yeoman.Base.extend({
   constructor: function(){
     yeoman.Base.apply(this, arguments);
 
-    this.option('nc');
-    this.option('controller');
-    this.no_controller = this.options.nc ? true : (this.options['controller'] ? this.options['controller'] === 'false' : false);
+    var local_options = {nc:'controller',nd:'dao',nm:'model',nr:'routes',nrm:'readme'};
 
-    this.option('nd');
-    this.option('dao');
-    this.no_dao = this.options.nd ? true : (this.options['dao'] ? this.options['dao'] === 'false' : false);
+    for(var k in local_options){
+        this.option(k);
+        this.option(local_options[k]);
 
-    this.option('nm');
-    this.option('model');
-    this.no_model = this.options.nm ? true : (this.options['model'] ? this.options['model'] === 'false' : false);
-
-    this.option('nr');
-    this.option('routes');
-    this.no_routes = this.options.nr ? true : (this.options['routes'] ? this.options['routes'] === 'false' : false);
+        this['no_'+local_options[k]] = this.options[k] ? true : (this.options[local_options[k]] ? this.options[local_options[k]] === 'false' : false);
+    }
 
     this.argument('resource_name', { type: String, required: false });
   },
@@ -50,17 +43,19 @@ module.exports = yeoman.Base.extend({
     var slugify = require('slugify');
     this.resource_name_slugified = slugify(this.resource_name,'_').toLowerCase();
     this.resource_class_name = ucwords(this.resource_name).split(' ').join('');
-    var self = this;
+    var self = this, extension;
 
-    ['controller','dao','model','routes'].forEach(function(input){
-      if(input == 'controller' && self.no_controller) return true;
-      if(input == 'dao' && self.no_dao) return true;
-      if(input == 'model' && self.no_model) return true;
-      if(input == 'routes' && self.no_routes) return true;
+    ['controller','dao','model','routes','readme'].forEach(function(input){
+      if(self['no_'+input]) return true;
+
+      if(input == 'readme'){
+        input = input.toUpperCase();
+        extension = 'md';
+      }else extension = 'js';
 
       self.fs.copyTpl(
-        self.templatePath(input+'.js'),
-        self.destinationPath('resources/'+self.resource_name_slugified+'/'+self.resource_name_slugified+'_'+input+'.js'),
+        self.templatePath(input+'.'+extension),
+        self.destinationPath('resources/'+self.resource_name_slugified+'/'+self.resource_name_slugified+'_'+input+'.'+extension),
         { resource_class_name: self.resource_class_name, resource_name_slugified: self.resource_name_slugified }
       );
     });

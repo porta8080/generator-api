@@ -1,11 +1,13 @@
 {
   "name": "base",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "start:dev": "npm start",
+    "start:prod": "forever start index.js"
   },
   "keywords": [],
   "author": "",
@@ -14,9 +16,13 @@
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongoose": "^4.7.0"
+    "forever": "^0.15.3",
+    "mongoose": "^4.7.0",
+    "request": "^2.79.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
     "nodemon": "^1.11.0"
   }
 }

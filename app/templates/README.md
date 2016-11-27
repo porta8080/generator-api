@@ -1,1 +1,1 @@
-Esse é o projeto **<%= project_name %>**
+This is the **<%= project_name %>** project.
