@@ -14,5 +14,5 @@ app.use(function(err,req,res,next){
 });
 
 app.listen(8080,function(){
-  console.log('Server listening at port 8080');
+  console.log('Server listening to port 8080');
 });

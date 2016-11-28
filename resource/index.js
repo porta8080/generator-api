@@ -9,7 +9,7 @@ module.exports = yeoman.Base.extend({
   constructor: function(){
     yeoman.Base.apply(this, arguments);
 
-    var local_options = {nc:'controller',nd:'dao',nm:'model',nr:'routes',nrm:'readme'};
+    var local_options = {nc:'controller',nd:'dao',nm:'model',nr:'routes',nrm:'readme',nt:'test'};
 
     for(var k in local_options){
         this.option(k);
@@ -45,7 +45,7 @@ module.exports = yeoman.Base.extend({
     this.resource_class_name = ucwords(this.resource_name).split(' ').join('');
     var self = this, extension;
 
-    ['controller','dao','model','routes','readme'].forEach(function(input){
+    ['controller','dao','model','routes','readme','test'].forEach(function(input){
       if(self['no_'+input]) return true;
 
       if(input == 'readme'){

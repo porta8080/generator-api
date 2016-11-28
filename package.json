@@ -1,6 +1,6 @@
 {
   "name": "generator-full-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A node API generator for Yeoman",
   "main": "index.js",
   "scripts": {

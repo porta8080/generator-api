@@ -6,7 +6,7 @@ function <%= resource_class_name %>Controller(){
 }
 
 <%= resource_class_name %>Controller.prototype.index = function(req,res,next){
-  res.write('<%= resource_class_name %>');
+  res.status(200).write('<%= resource_class_name %>');
   res.end();
 };
 
