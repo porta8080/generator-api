@@ -31,12 +31,14 @@ To create a new resource, execute
 - `--nd` : create a new resource without a DAO class
 - `--nm` : create a new resource without a model
 - `--nt` : create a new resource without a test file
+- `--nh` : create a new resource without a helper file
 - `--nrm` : create a new resource without a README file
 - `--routes` : **boolean**. Sets whether this resource must contain a routes file or not
 - `--controller` : **boolean**. Sets whether this resource must contain a controller or not
 - `--dao` : **boolean**. Sets whether this resource must contain a DAO class or not
 - `--model` : **boolean**. Sets whether this resource must contain a model or not
 - `--test` : **boolean**. Sets whether this resource must contain a test file or not
+- `--helper` : **boolean**. Sets whether this resource must contain a helper file
 - `--readme` : **boolean**. Sets whether this resource must contain a README file or not
 
 ## Content
@@ -47,5 +49,6 @@ The application is currently bound with the following stack:
 - **BluebirdJS** : as the Promise library
 - **Mongoose** : as the ODM tool for handling MongoDB
 - **Nodemon** : as a Node refresher (restarts the application every time it's modified)
-- **Forever** : as a process manager, to keep the application alive in production
+- **PM2** : as a process manager, to keep the application alive in production
+- **Bunyan** : as a logging library
 - **Mocha with Chai** : as a test framework
