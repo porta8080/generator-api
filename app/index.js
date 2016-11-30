@@ -1,5 +1,9 @@
 'use strict';
+
 var yeoman  = require('yeoman-generator');
+var slugify = require('slugify');
+var fs = require('fs');
+var mkdirp = require('mkdirp');
 
 module.exports = yeoman.Base.extend({
   constructor: function(){
@@ -21,7 +25,7 @@ module.exports = yeoman.Base.extend({
       questions.push({
         type: 'input',
         name: 'project_name',
-        message: 'Qual será o nome do projeto?',
+        message: 'What will the will the project name be?',
         store: true
       });
     }
@@ -31,24 +35,17 @@ module.exports = yeoman.Base.extend({
       if('project_name' in answers) this.project_name = answers['project_name'];
     }.bind(this));
   },
-  install: function(){
-  },
   writing: function(){
-    var slugify = require('slugify');
-    var ncp = require('ncp').ncp;
-
-    this.project_name_slugified = slugify(this.project_name,'_').toLowerCase();
     var self = this;
 
-    ncp(this.templatePath(''), this.destinationPath(this.project_name_slugified+'/'),{
-      filter: function(entry){
-        if(!self.no_resources) return true;
-        return !(/resources\/hello_world/.test(entry));
-      }
-    }, function (err) {
-      if (err) {
-        return console.error(err);
-      }
+    this.project_name_slugified = slugify(this.project_name,'_').toLowerCase();
+    var root_path = './'+this.project_name_slugified;
+
+    mkdirp.sync(root_path);
+
+    this.fs.copyTpl(this.templatePath(''),this.destinationPath(root_path)+'/',{
+      project_name_slugified: this.project_name_slugified,
+      project_name: this.project_name
     });
   }
 });

@@ -9,7 +9,7 @@ HelloWorldDAO.prototype.findAll = function(cb){
 };
 
 HelloWorldDAO.prototype.create = function(cb){
-  this.model.insert({created_at: new Date()},cb);
+  this.model.create({created_at: new Date()},cb);
 };
 
 module.exports = new HelloWorldDAO();
