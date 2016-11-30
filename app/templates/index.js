@@ -1,8 +1,10 @@
 var express = require('express');
 var body_parser = require('body-parser');
 var compression = require('compression');
-require('./helpers');
+var config = require('./config');
 var log = require('./log');
+
+require('./helpers');
 
 var app = express();
 
@@ -16,7 +18,7 @@ app.use(function(req,res,next){
   // Not found
   var err = new Error('Not found');
   err.status = 404;
-  nex(err);
+  next(err);
 });
 
 app.use(function(err,req,res,next){
@@ -27,6 +29,6 @@ app.use(function(err,req,res,next){
   res.status(err.status || 500).json(err.message);
 });
 
-app.listen(8080,function(){
-  console.log('Server listening to port 8080');
+app.listen(config.port,function(){
+  console.log('Server listening to port '+config.port);
 });

@@ -1,5 +1,4 @@
-var environment = process.node.NODE_ENV || 'dev';
-console.log(environment);
+var fs = require('fs');
 
 var config = {
   db: {
@@ -17,6 +16,11 @@ var config = {
   }
 };
 
-var env_config = require('./config.'+environment);
-if(typeof env_config === 'object') config = Object.assign(config,env_config);
+var environment = process.env.NODE_ENV || 'dev';
+var path = './config.'+environment;
+if (!fs.existsSync(path)){
+  var env_config = require(path);
+  if(typeof env_config === 'object') config = Object.assign(config,env_config);
+}
+
 module.exports = config;

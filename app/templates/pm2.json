@@ -1,0 +1,13 @@
+{
+  "apps" :
+  [
+    {
+      "name" : "<%= project_name_slugified %>",
+      "script" : "index.js",
+      "watch": true,
+      "env": {
+        "NODE_ENV": "prod"
+      }
+    }
+  ]
+}

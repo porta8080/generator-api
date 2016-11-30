@@ -7,7 +7,7 @@
     "test": "./node_modules/mocha/bin/mocha ./test.js",
     "start": "nodemon index.js",
     "start:dev": "npm start",
-    "start:prod": "process.env.NODE_ENV = \"prod\" && pm2 start index.js --name=\"<%= project_name_slugified %>\"",
+    "start:prod": "pm2 start ./pm2.json",
     "stop:prod": "pm2 stop <%= project_name_slugified %>"
   },
   "keywords": [],
