@@ -1,11 +1,12 @@
 var express = require('express');
 var body_parser = require('body-parser');
-
+var compression = require('compression');
 require('./helpers');
 var log = require('./log');
 
 var app = express();
 
+app.use(compression());
 app.use(body_parser.urlencoded({extended: false}));
 app.use(body_parser.json());
 

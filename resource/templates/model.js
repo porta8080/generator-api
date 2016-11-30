@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var <%= resource_class_name %>Model = function(){};
 
 <%= resource_class_name %>Model.prototype.sayHello = function(){
-  console.log('Hello, I am '+this._id+' and I was created at '+this.created_at.toString());
+  console.log('id: '+this._id+', created at: '+this.created_at.toString());
 };
 
 var schema = new mongoose.Schema({

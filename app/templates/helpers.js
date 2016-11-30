@@ -1,8 +1,9 @@
 var fs = require('fs');
+var config = require('./config');
 var helper = {};
 
 helper.forEachResourceFileType = function(file_type,cb){
-  var path = './resources';
+  var path = config.resources.root;
   fs.readdirSync(path).filter(function(entry){
     if(fs.statSync([path,entry].join('/')).isDirectory()){
       file_name = [path,entry,entry+'_'+file_type+'.js'].join('/');

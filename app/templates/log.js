@@ -1,4 +1,5 @@
 var bunyan = require('bunyan');
+var config = require('./config');
 
 var log = bunyan.createLogger({
   name: '<%= project_name_slugified %>',
@@ -9,7 +10,7 @@ var log = bunyan.createLogger({
     },
     {
       level: 'error',
-      path: './error.log'
+      path: config.log.filename
     }
   ]
 });

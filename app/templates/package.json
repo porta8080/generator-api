@@ -7,7 +7,7 @@
     "test": "./node_modules/mocha/bin/mocha ./test.js",
     "start": "nodemon index.js",
     "start:dev": "npm start",
-    "start:prod": "pm2 start index.js --name=\"<%= project_name_slugified %>\"",
+    "start:prod": "process.env.NODE_ENV = \"prod\" && pm2 start index.js --name=\"<%= project_name_slugified %>\"",
     "stop:prod": "pm2 stop <%= project_name_slugified %>"
   },
   "keywords": [],
@@ -17,6 +17,7 @@
     "bluebird": "^3.4.6",
     "bunyan": "^1.8.5",
     "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
     "express": "^4.14.0",
     "pm2": "^0.15.3",
     "mongoose": "^4.7.0",
