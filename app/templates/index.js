@@ -1,6 +1,8 @@
 var express = require('express');
 var body_parser = require('body-parser');
 var compression = require('compression');
+var helmet = require('helmet');
+var cors = require('cors');
 var config = require('./config');
 var log = require('./log');
 
@@ -8,6 +10,8 @@ require('./helpers');
 
 var app = express();
 
+app.use(cors());
+app.use(helmet());
 app.use(compression());
 app.use(body_parser.urlencoded({extended: false}));
 app.use(body_parser.json());

@@ -52,3 +52,4 @@ The application is currently bound with the following stack:
 - **PM2** : as a process manager, to keep the application alive in production
 - **Bunyan** : as a logging library
 - **Mocha with Chai** : as a test framework
+- **Helmet and CORS** : to provide security and cross-origin resource sharing
