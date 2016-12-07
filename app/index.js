@@ -42,7 +42,7 @@ module.exports = yeoman.Base.extend({
     var root_path = './'+this.project_name_slugified;
 
     mkdirp.sync(root_path);
-
+    console.log(this.templatePath(''),this.destinationPath(root_path)+'/')
     this.fs.copyTpl(this.templatePath(''),this.destinationPath(root_path)+'/',{
       project_name_slugified: this.project_name_slugified,
       project_name: this.project_name
